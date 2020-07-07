@@ -1,5 +1,4 @@
 public class MainExtended {
-    public class Main {
         public static void main(String[] args) {
             String myName = "Emil";
             int myAge = 30;
@@ -14,4 +13,4 @@ public class MainExtended {
 
         }
     }
-}
+
