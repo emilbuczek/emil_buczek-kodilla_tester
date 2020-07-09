@@ -22,7 +22,7 @@ public class Application {
         }
         int toSquareResult = calculator.toSquare(a);
         boolean correctThird = ResultChecker.assertEquals(25,toSquareResult);
-        if(correctThird) {
+        if(correctThird){
             System.out.println("Metoda toSquare  działa poprawnie dla liczby " + a );
         }else{
             System.out.println("Metoda toSquare nie działa poprawnie dla liczby " + a );
