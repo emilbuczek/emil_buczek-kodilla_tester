@@ -7,8 +7,8 @@ public class Grades {
 
         sum /= grade.length;
         System.out.println(sum);
-        int zmienna = grade[9];
-        System.out.println(zmienna);
+        int variable = grade[9];
+        System.out.println(variable);
     }
 }
 
