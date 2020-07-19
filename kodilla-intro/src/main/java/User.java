@@ -1,15 +1,13 @@
-public class Age {
+public class User {
     String name;
     double age;
     double height;
 
-
-    public Age(String name, double age, double height) {
+    public User(String name, double age, double height) {
         this.name = name;
         this.age = age;
         this.height = height;
     }
-
 
     public void checkAge() {
         if (age > 30 && height > 160) {
