@@ -16,7 +16,5 @@ public class Book {
 
     private static String of(String author, String title) {
         return (author + " " + title);
-
     }
-
 }
