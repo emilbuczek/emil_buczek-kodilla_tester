@@ -1,19 +1,17 @@
 package com.kodilla.inheritance.abstracts;
 
-public class Person extends Job {
+public class Person {
     public String firstName;
     public int age;
-    public String job;
+    public Job job;
 
-    public Person(String firstName, int age,String job){
-        super("Hunting", 5);
-        Person person= new Person("Emil" , 30 , "Hunter");
-        Person person1= new Person("Karol", 25, "Baker");
-        Person person2= new Person("David", 40 , "Tester");
+    public Person(String firstName, int age, Job job) {
+        this.firstName = firstName;
+        this.age = age;
+        this.job = job;
     }
 
-    @Override
-    public void getJob() {
-
+    public String getJob() {
+        return this.job.getNameOfResponsibilities();
     }
 }

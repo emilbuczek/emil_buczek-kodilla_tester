@@ -4,19 +4,15 @@ public  abstract class Job {
     private String nameOfResponsibilities;
     private int numberOfSalary;
 
-
     public Job(String nameOfResponsibilities, int numberOfSalary) {
         this.numberOfSalary = numberOfSalary;
         this.nameOfResponsibilities = nameOfResponsibilities;
     }
-
-    public int getNumberOfSalary() {
+    public int getSalary() {
         return numberOfSalary;
     }
-
     public String getNameOfResponsibilities() {
         return nameOfResponsibilities;
     }
-
-    public abstract void getJob();
+    public abstract String getJob();
 }
