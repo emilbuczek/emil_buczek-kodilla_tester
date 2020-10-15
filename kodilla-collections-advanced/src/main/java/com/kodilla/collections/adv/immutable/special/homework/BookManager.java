@@ -1,13 +1,26 @@
 package com.kodilla.collections.adv.immutable.special.homework;
 
-public class BookManager extends Book {
-    public BookManager(String title, String author) {
-        super(title, author);
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookManager {
+    private List<Book> books = new ArrayList<>();
+
+    public Book createBook (String title, String author) {
+        return new Book (title,author);
     }
-    public Book createBook(String author, String title) {
-        Book x = new Book("Aaa", " zxvc");
-        Book y = new Book("Bbb", "asdf");
-        Book z = new Book("Ccc", "qwer");
-        return null;
+    public void createBooksList(String title, String author){
+        Book tempBook = new Book (title, author);
+        for (Book book : books) {
+            if (tempBook.equals(book))
+                System.out.println("The object with these values already exists");
+            else
+                System.out.println("The object with these values does not exist");
+            if (tempBook == book)
+                System.out.println("Such an object already exists");
+            else
+                System.out.println("Such an object does not exist");
+        }
+        books.add(tempBook);
     }
 }

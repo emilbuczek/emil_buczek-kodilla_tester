@@ -2,10 +2,17 @@ package com.kodilla.collections.adv.immutable.special.homework;
 
 public class BookApplication {
     public static void main(String[] args) {
-        String x = "This is morpheus";
-        String y = "This is trinity";
-        String z = "This i neo";
-        System.out.println();
-        System.out.println(x.equals(y));
+        BookManager bookManager = new BookManager();
+        //TEST NA SAMYCH OBIEKTACH
+        Book book1 = bookManager.createBook("Historia", "Nowakowski");
+        Book book2 = bookManager.createBook("Historia", "Nowakowski");
+        System.out.println(book1.hashCode());
+        System.out.println(book2.hashCode());
+        System.out.println(book1 == book2);
+        System.out.println(book1.equals(book2));
+        System.out.println("==============================================");
+        //TEST NA LISTACH
+        bookManager.createBooksList("Historia", "Kowalski");
+        bookManager.createBooksList("Historia", "Kowalski");
     }
 }
