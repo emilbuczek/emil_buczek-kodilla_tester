@@ -9,11 +9,11 @@ public final class Task {
         this.duration = duration;
     }
 
-    public String getTitle() {
+    public final String getTitle() {
         return title;
     }
 
-    public int getDuration() {
+    public final int getDuration() {
         return duration;
     }
 }

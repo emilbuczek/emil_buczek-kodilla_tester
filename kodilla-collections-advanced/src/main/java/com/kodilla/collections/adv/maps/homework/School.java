@@ -1,20 +1,26 @@
 package com.kodilla.collections.adv.maps.homework;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class School extends Principal {
+public class School {
+    private String name;
+    private List<Integer> schoolRooms = new ArrayList<>();
 
-    private ArrayList<double[]> numberOfStudents = new ArrayList<>();
-
-    public ArrayList<double[]> getNumberOfStudents() {
-        return numberOfStudents;
+    public School (String name, int ... schoolRooms) {
+        for (int schoolRoom : schoolRooms)
+            this.schoolRooms.add(schoolRoom);
+        this.name = name;
     }
 
-    public School(double ... numberOfStudents){
-        super("John" , "Stevenson" );
+    public int getSum() {
+        int sum = 0;
+        for (int schoolRoom : schoolRooms)
+            sum += schoolRoom;
+        return sum;
+    }
 
-        for (double school : numberOfStudents)
-                this.numberOfStudents.add(numberOfStudents);
-        }
+    public String getName() {
+        return name;
+    }
 }
-
