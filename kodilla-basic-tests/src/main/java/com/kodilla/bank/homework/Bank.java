@@ -11,6 +11,7 @@ public class Bank {
         this.cashMachine3 = new CashMachine();
     }
 
+
     public void addCashMachine1Operation(int money) {
         if (money % 20 == 0) {
             this.cashMachine1.addOperation(money);
