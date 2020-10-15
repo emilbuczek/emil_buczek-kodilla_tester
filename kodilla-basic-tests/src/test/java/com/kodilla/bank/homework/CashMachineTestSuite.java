@@ -8,94 +8,77 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CashMachineTestSuite {
 
     @Test
-    public void shouldHaveNullLength() {
+    public void shouldHaveZeroLength() {
         CashMachine cashMachine = new CashMachine();
-        int[] transactions = cashMachine.getAccountBalance(0);
-        assertEquals(0, transactions.length);
+
+        int[] values = cashMachine.getOperations();
+        assertEquals(0, values.length);
     }
 
     @Test
-    public void shouldReturnNumberOfTransactionWhereLastIsDebt(){
-//invalid transaction - trying withdraw money when not enough cash on ITM
+    public void shouldAddTwoElementsToArray() {
         CashMachine cashMachine = new CashMachine();
-        cashMachine.add(100);
-        cashMachine.add(-100);
-        cashMachine.add(20);
-        cashMachine.add(-20);
-        cashMachine.add(-60);
-        assertEquals(5, cashMachine.getAccountBalance(5).length);
+        cashMachine.addOperation(50);
+        cashMachine.addOperation(-25);
+
+        int[] values = cashMachine.getOperations();
+        assertEquals(2, values.length);
+        assertEquals(50, values[0]);
+        assertEquals(-25, values[1]);
     }
 
     @Test
-    public void shouldReturnTransactionBecauseThereIsNoMoneyOnAccount(){
-//invalid transaction - trying withdraw money when not enough cash in the cash machine
+    public void shouldCalculateBalance() {
         CashMachine cashMachine = new CashMachine();
-        cashMachine.add(50);
-        cashMachine.add(-50);
-        cashMachine.add(20);
-        cashMachine.add(-20);
-        cashMachine.add(-100);
-        assertEquals(0, cashMachine.getAverageWithdrawMoney());
+        cashMachine.addOperation(230);
+        cashMachine.addOperation(100);
+        cashMachine.addOperation(-70);
+
+        int balance = cashMachine.getBalance();
+        assertEquals(260, balance);
     }
 
     @Test
-    public void shouldReturnBalanceEqualsZeroIfEmpty(){
+    public void shouldReturnNumberOfDeposits() {
         CashMachine cashMachine = new CashMachine();
-        cashMachine.add(50);
-        cashMachine.add(100);
-        cashMachine.add(20);
-        cashMachine.add(-20);
-        cashMachine.add(-150);
-        assertEquals(0, cashMachine.getAverage());
+        cashMachine.addOperation(230);
+        cashMachine.addOperation(210);
+        cashMachine.addOperation(-70);
+
+        int deposits = cashMachine.getNumberOfDeposits();
+        assertEquals(2, deposits);
     }
 
     @Test
-    public void shouldReturnBalanceEqualsZeroIfNoTransactionsWereMade(){
+    public void shouldReturnNumberOfWithdraws() {
         CashMachine cashMachine = new CashMachine();
-        assertEquals(0, cashMachine.getAccountBalance(0));
+        cashMachine.addOperation(230);
+        cashMachine.addOperation(-70);
+        cashMachine.addOperation(-90);
+
+        int withdraws = cashMachine.getNumberOfWithdraws();
+        assertEquals(2, withdraws);
     }
 
     @Test
-    public void shouldReturnAverageEqualsZeroIfNoTransactionsWereMade(){
+    public void shouldCalculateAverageOfDeposits() {
         CashMachine cashMachine = new CashMachine();
-        assertEquals(0.0, cashMachine.getAverageDepositMoney() + cashMachine.getAverageWithdrawMoney(), 0.00);
+        cashMachine.addOperation(230);
+        cashMachine.addOperation(210);
+        cashMachine.addOperation(-70);
+
+        double avgDeposits = cashMachine.getAverageOfDeposits();
+        assertEquals(220, avgDeposits);
     }
 
     @Test
-    public void shouldNotCountWithdrawTransactionIfEmpty(){
+    public void shouldCalculateAverageOfWithdraws() {
         CashMachine cashMachine = new CashMachine();
-        cashMachine.add(-40);
-        cashMachine.add(-50);
-        cashMachine.add(-50);
-        assertEquals(-140,cashMachine.getAverageWithdrawMoney());
-    }
+        cashMachine.addOperation(230);
+        cashMachine.addOperation(-90);
+        cashMachine.addOperation(-70);
 
-    @Test
-    public void shouldNotCountWithdrawTransactionIfNotEnoughMoney(){
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.add(50);
-        cashMachine.add(-100);
-        cashMachine.add(100);
-        cashMachine.add(-200);
-        cashMachine.add(100);
-        cashMachine.add(-50);
-        cashMachine.add(-20);
-        assertEquals(4,cashMachine.getAverageWithdrawMoney());
-    }
-
-    @Test
-    public void shouldReturnAverageDepositEqualsZeroIfNoDeposits(){
-        CashMachine cashMachine = new CashMachine();
-        assertEquals(0.0, cashMachine.getAverageDepositMoney(), 0.00);
-    }
-
-    @Test
-    public void shouldReturnAverageWithdraws(){
-        CashMachine cashMachine = new CashMachine();
-        cashMachine.add(-50);
-        cashMachine.add(-100);
-        cashMachine.add(-200);
-        cashMachine.add(-20);
-        assertEquals(-370.0, cashMachine.getAverageWithdrawMoney(), -370.00);
+        double avgWithdraws = cashMachine.getAverageOfWithdraws();
+        assertEquals(-80, avgWithdraws);
     }
 }
