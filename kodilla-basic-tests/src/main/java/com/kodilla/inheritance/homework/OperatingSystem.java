@@ -8,9 +8,11 @@ public abstract class OperatingSystem {
         this.productionYear = productionYear;
         this.numberOfApplications = numberOfApplications;
     }
+
     public void turnOn() {
         System.out.println("System Up..");
     }
+
     public void turnOff() {
         System.out.println("System is closing down ..");
     }
